@@ -3,7 +3,7 @@
 //  CobaltiOSSDK
 //
 //  Created by Minsoo Kim on 2015. 12. 23..
-//  Copyright © 2015년 CstLex. All rights reserved.
+//  Copyright © 2015 CstLex. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

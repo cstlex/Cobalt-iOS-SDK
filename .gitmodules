@@ -1,0 +1,3 @@
+[submodule "CobaltiOSSDK/OpenSources/AFNetworking"]
+	path = CobaltiOSSDK/OpenSources/AFNetworking
+	url = git@github.com:AFNetworking/AFNetworking.git

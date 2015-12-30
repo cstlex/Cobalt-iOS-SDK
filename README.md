@@ -22,3 +22,27 @@ Unofficial [Coblat](https://github.com/cobalt-uoft/cobalt) iOS SDK
 	NSLog(@"%@", error);
 }];
 ```
+
+```Objective-C
+[MSCCourseKit searchWithQuery:@"Introduction" skip:0 limit:200 sort:@[@"+department"] success^(NSArray *response){
+	//Use array of MSCCourse object
+} error:^(NSError *error){
+	NSLog(@"%@", error);
+}];
+```
+
+```Objective-C
+Correspond to courses/show/:id
+
+MSCCourse *course = [MSCCourse objectWithCourseId:@"CSC148H1F20159"];
+[course fetchIfNeededInBackgroundWithCompletion:^(NSError *error){
+	if (error) {
+		NSLog(@"%@", error);
+	} else {
+		//Use course instance
+	}
+}];
+```
+
+##Unimplemented Parts
+Currently Building and filter of Course is not implemented but will be implemented soon

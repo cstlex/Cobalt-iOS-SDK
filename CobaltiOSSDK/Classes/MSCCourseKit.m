@@ -74,34 +74,34 @@
 
 #pragma Search
 + (void)searchWithQuery:(NSString *)query success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
-    [self searchWithQuery:query limit:0 skip:0 sort:nil success:success error:error];
+    [self searchWithQuery:query skip:0 limit:0 sort:nil success:success error:error];
 }
 
 + (void)searchWithQuery:(NSString *)query limit:(int)limit success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
-    [self searchWithQuery:query limit:limit skip:0 sort:nil success:success error:error];
+    [self searchWithQuery:query skip:0 limit:limit sort:nil success:success error:error];
 }
 
 + (void)searchWithQuery:(NSString *)query skip:(int)skip success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
-    [self searchWithQuery:query limit:0 skip:skip sort:nil success:success error:error];
+    [self searchWithQuery:query skip:skip limit:0 sort:nil success:success error:error];
 }
 
 + (void)searchWithQuery:(NSString *)query sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
-    [self searchWithQuery:query limit:0 skip:0 sort:sortKeys success:success error:error];
+    [self searchWithQuery:query skip:0 limit:0 sort:sortKeys success:success error:error];
 }
 
-+ (void)searchWithQuery:(NSString *)query limit:(int)limit skip:(int)skip success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
-    [self searchWithQuery:query limit:limit skip:skip sort:nil success:success error:error];
++ (void)searchWithQuery:(NSString *)query skip:(int)skip limit:(int)limit success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
+    [self searchWithQuery:query skip:skip limit:limit sort:nil success:success error:error];
 }
 
 + (void)searchWithQuery:(NSString *)query limit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
-    [self searchWithQuery:query limit:limit skip:0 sort:sortKeys success:success error:error];
+    [self searchWithQuery:query skip:0 limit:limit sort:sortKeys success:success error:error];
 }
 
 + (void)searchWithQuery:(NSString *)query skip:(int)skip sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
-    [self searchWithQuery:query limit:0 skip:skip sort:sortKeys success:success error:error];
+    [self searchWithQuery:query skip:skip limit:0 sort:sortKeys success:success error:error];
 }
 
-+ (void)searchWithQuery:(NSString *)query limit:(int)limit skip:(int)skip sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)errorHandler {
++ (void)searchWithQuery:(NSString *)query skip:(int)skip limit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)errorHandler {
     NSMutableDictionary *params = [NSMutableDictionary new];
     
     [params setObject:[NSNumber numberWithInt:skip] forKey:@"skip"];

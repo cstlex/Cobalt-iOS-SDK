@@ -39,12 +39,12 @@ typedef void (^MSCCourseLoadErrorBlock)(NSError *error);
 
 + (void)searchWithQuery:(NSString *)query sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
 
-+ (void)searchWithQuery:(NSString *)query limit:(int)limit skip:(int)skip success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
++ (void)searchWithQuery:(NSString *)query skip:(int)skip limit:(int)limit success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
 
 + (void)searchWithQuery:(NSString *)query limit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
 
 + (void)searchWithQuery:(NSString *)query skip:(int)skip sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
 
-+ (void)searchWithQuery:(NSString *)query limit:(int)limit skip:(int)skip sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
++ (void)searchWithQuery:(NSString *)query skip:(int)skip limit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
 
 @end

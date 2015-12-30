@@ -10,6 +10,7 @@
 
 @implementation MSCCourseKit
 
+#pragma List
 + (void)getCourseListWithSuccess:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
     [self getCourseListWithSkip:0 limit:10 sort:@[] success:success error:error];
 }
@@ -60,6 +61,68 @@
             }
         } else {
             if (success){
+                NSMutableArray *temp = [NSMutableArray new];
+                for (NSDictionary *data in response){
+                    MSCCourse *course = [[MSCCourse alloc] initWithData:data];
+                    [temp addObject:course];
+                }
+                success([NSArray arrayWithArray:temp]);
+            }
+        }
+    }];
+}
+
+#pragma Search
++ (void)searchWithQuery:(NSString *)query success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
+    [self searchWithQuery:query limit:0 skip:0 sort:nil success:success error:error];
+}
+
++ (void)searchWithQuery:(NSString *)query limit:(int)limit success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
+    [self searchWithQuery:query limit:limit skip:0 sort:nil success:success error:error];
+}
+
++ (void)searchWithQuery:(NSString *)query skip:(int)skip success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
+    [self searchWithQuery:query limit:0 skip:skip sort:nil success:success error:error];
+}
+
++ (void)searchWithQuery:(NSString *)query sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
+    [self searchWithQuery:query limit:0 skip:0 sort:sortKeys success:success error:error];
+}
+
++ (void)searchWithQuery:(NSString *)query limit:(int)limit skip:(int)skip success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
+    [self searchWithQuery:query limit:limit skip:skip sort:nil success:success error:error];
+}
+
++ (void)searchWithQuery:(NSString *)query limit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
+    [self searchWithQuery:query limit:limit skip:0 sort:sortKeys success:success error:error];
+}
+
++ (void)searchWithQuery:(NSString *)query skip:(int)skip sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
+    [self searchWithQuery:query limit:0 skip:skip sort:sortKeys success:success error:error];
+}
+
++ (void)searchWithQuery:(NSString *)query limit:(int)limit skip:(int)skip sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)errorHandler {
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    
+    [params setObject:[NSNumber numberWithInt:skip] forKey:@"skip"];
+    [params setObject:[NSNumber numberWithInt:limit] forKey:@"limit"];
+    if ([sortKeys count] > 0){
+        NSString *sortKey = @"";
+        for (NSString *key in sortKeys){
+            if (![sortKey isEqualToString:@""])
+                sortKey = [sortKey stringByAppendingString:@" "];
+            [sortKey stringByAppendingString:key];
+        }
+        [params setObject:sortKey forKey:@"sort"];
+    }
+    
+    [super performRequestWithUrl:@"https://cobalt.qas.im/api/1.0/courses/search" parameters:params onCompletion:^(id response, NSError *error) {
+        if (error){
+            if (errorHandler){
+                errorHandler(error);
+            }
+        } else {
+            if (success) {
                 NSMutableArray *temp = [NSMutableArray new];
                 for (NSDictionary *data in response){
                     MSCCourse *course = [[MSCCourse alloc] initWithData:data];

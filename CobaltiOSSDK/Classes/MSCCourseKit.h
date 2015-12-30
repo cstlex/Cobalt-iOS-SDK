@@ -13,6 +13,7 @@ typedef void (^MSCCourseLoadErrorBlock)(NSError *error);
 
 @interface MSCCourseKit : MSCobaltKit
 
+#pragma List
 + (void)getCourseListWithSuccess:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
 
 + (void)getCourseListWithLimit:(int)limit success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
@@ -28,5 +29,23 @@ typedef void (^MSCCourseLoadErrorBlock)(NSError *error);
 + (void)getCourseListWithSkip:(int)skip limit:(int)limit success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
 
 + (void)getCourseListWithSkip:(int)skip limit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)errorHandler;
+
+
+#pragma Search
++ (void)searchWithQuery:(NSString *)query success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
+
++ (void)searchWithQuery:(NSString *)query limit:(int)limit success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
+
++ (void)searchWithQuery:(NSString *)query skip:(int)skip success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
+
++ (void)searchWithQuery:(NSString *)query sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
+
++ (void)searchWithQuery:(NSString *)query limit:(int)limit skip:(int)skip success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
+
++ (void)searchWithQuery:(NSString *)query limit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
+
++ (void)searchWithQuery:(NSString *)query skip:(int)skip sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
+
++ (void)searchWithQuery:(NSString *)query limit:(int)limit skip:(int)skip sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
 
 @end

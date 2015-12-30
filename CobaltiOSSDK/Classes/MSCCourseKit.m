@@ -53,14 +53,19 @@
         [params setObject:sortKey forKey:@"sort"];
     }
     
-    [super performRequestWithUrl:@"https://cobalt.qas.im/api/1.0/courses/list" parameters:params onCompletion:^(NSDictionary *response, NSError *error){
+    [super performRequestWithUrl:@"https://cobalt.qas.im/api/1.0/courses/list" parameters:params onCompletion:^(NSArray *response, NSError *error){
         if (error){
             if (errorHandler){
                 errorHandler(error);
             }
         } else {
             if (success){
-                success(response);
+                NSMutableArray *temp = [NSMutableArray new];
+                for (NSDictionary *data in response){
+                    MSCCourse *course = [[MSCCourse alloc] initWithData:data];
+                    [temp addObject:course];
+                }
+                success([NSArray arrayWithArray:temp]);
             }
         }
     }];

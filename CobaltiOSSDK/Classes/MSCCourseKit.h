@@ -6,7 +6,7 @@
 //  Copyright © 2015 CstLex. All rights reserved.
 //
 
-#import "MSCobaltKit.h"
+#import "MSCCourse.h"
 
 typedef void (^MSCCourseLoadSuccessBlock)(id response);
 typedef void (^MSCCourseLoadErrorBlock)(NSError *error);

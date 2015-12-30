@@ -16,7 +16,11 @@ static NSString *apiKey;
     apiKey = _apiKey;
 }
 
-- (void)performRequestWithUrl:(NSString *)url parameters:(NSMutableDictionary *)param onCompletion:(MSCRequestDoneBlock)handler {
++ (NSString *)apiKey {
+    return apiKey;
+}
+
++ (void)performRequestWithUrl:(NSString *)url parameters:(NSMutableDictionary *)param onCompletion:(MSCRequestDoneBlock)handler {
     if (apiKey == nil){
         [NSException raise:@"Cobalt API KEY is not initialized" format:@"Cobalt API KEY must be initialized before using"];
     }
@@ -29,6 +33,37 @@ static NSString *apiKey;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         handler(nil, error);
     }];
+}
+
++ (MSCCampus)campusFromString:(NSString *)campus {
+    MSCCampus campusValue = MSCCampusStGeorge;
+    if ([campus isEqualToString:@"UTM"]){
+        campusValue = MSCCampusMissisagua;
+    } else if ([campus isEqualToString:@"UTSC"]){
+        campusValue = MSCCampusScarborough;
+    }
+    return campusValue;
+}
+
++ (NSString *)stringFromCampus:(MSCCampus)campus {
+    NSString *campusString;
+    switch (campus) {
+        case MSCCampusStGeorge:
+            campusString = @"UTSG";
+            break;
+            
+        case MSCCampusMissisagua:
+            campusString = @"UTM";
+            break;
+            
+        case MSCCampusScarborough:
+            campusString = @"UTSC";
+            break;
+            
+        default:
+            break;
+    }
+    return campusString;
 }
 
 @end

@@ -10,35 +10,35 @@
 
 @implementation MSCCourseKit
 
-- (void)getCourseListWithSuccess:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
++ (void)getCourseListWithSuccess:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
     [self getCourseListWithSkip:0 limit:10 sort:@[] success:success error:error];
 }
 
-- (void)getCourseListWithLimit:(int)limit success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
++ (void)getCourseListWithLimit:(int)limit success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
     [self getCourseListWithSkip:0 limit:limit sort:@[] success:success error:error];
 }
 
-- (void)getCourseListWithLimit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
++ (void)getCourseListWithLimit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
     [self getCourseListWithSkip:0 limit:limit sort:sortKeys success:success error:error];
 }
 
-- (void)getCourseListWithSkip:(int)skip success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
++ (void)getCourseListWithSkip:(int)skip success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
     [self getCourseListWithSkip:skip limit:10 sort:@[] success:success error:error];
 }
 
-- (void)getCourseListWithSkip:(int)skip sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
++ (void)getCourseListWithSkip:(int)skip sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
     [self getCourseListWithSkip:skip limit:10 sort:sortKeys success:success error:error];
 }
 
-- (void)getCourseListWithSort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
++ (void)getCourseListWithSort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
     [self getCourseListWithSkip:0 limit:10 sort:sortKeys success:success error:error];
 }
 
-- (void)getCourseListWithSkip:(int)skip limit:(int)limit success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
++ (void)getCourseListWithSkip:(int)skip limit:(int)limit success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error {
     [self getCourseListWithSkip:skip limit:limit sort:@[] success:success error:error];
 }
 
-- (void)getCourseListWithSkip:(int)skip limit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)errorHandler {
++ (void)getCourseListWithSkip:(int)skip limit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)errorHandler {
     NSMutableDictionary *params = [NSMutableDictionary new];
     
     [params setObject:[NSNumber numberWithInt:skip] forKey:@"skip"];

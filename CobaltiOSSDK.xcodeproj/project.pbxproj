@@ -400,6 +400,7 @@
 				CC161D461C2AC5D300A8B034 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

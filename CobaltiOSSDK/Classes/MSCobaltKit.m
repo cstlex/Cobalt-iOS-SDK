@@ -11,6 +11,7 @@
 @implementation MSCobaltKit
 
 static NSString *apiKey;
+static NSString *baseUrl;
 
 + (void)setApiKey:(NSString *)_apiKey {
     apiKey = _apiKey;
@@ -18,6 +19,17 @@ static NSString *apiKey;
 
 + (NSString *)apiKey {
     return apiKey;
+}
+
++ (void)setBaseUrl:(NSString *)_baseUrl {
+    baseUrl = _baseUrl;
+}
+
++ (NSString *)baseUrl {
+    if (!baseUrl){
+        baseUrl = @"https://cobalt.qas.im/api/1.0/";
+    }
+    return baseUrl;
 }
 
 + (void)performRequestWithUrl:(NSString *)url parameters:(NSMutableDictionary *)param onCompletion:(MSCRequestDoneBlock)handler {
@@ -28,7 +40,7 @@ static NSString *apiKey;
     
     [param setObject:apiKey forKey:@"key"];
     
-    [manager GET:url parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:[[self baseUrl] stringByAppendingString:url] parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         handler(responseObject, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         handler(nil, error);

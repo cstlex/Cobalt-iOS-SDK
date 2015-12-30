@@ -30,7 +30,6 @@ typedef void (^MSCCourseLoadErrorBlock)(NSError *error);
 
 + (void)getCourseListWithSkip:(int)skip limit:(int)limit sort:(NSArray *)sortKeys success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)errorHandler;
 
-
 #pragma Search
 + (void)searchWithQuery:(NSString *)query success:(MSCCourseLoadSuccessBlock)success error:(MSCCourseLoadErrorBlock)error;
 

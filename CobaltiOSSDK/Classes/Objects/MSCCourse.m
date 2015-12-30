@@ -64,7 +64,7 @@
 }
 
 - (void)fetchWithError:(NSError **)error {
-    NSURL *fetchingUrl = [NSURL URLWithString:[NSString stringWithFormat:@"https://cobalt.qas.im/api/1.0/courses/show/%@?key=%@", courseId, [MSCobaltKit apiKey]]];
+    NSURL *fetchingUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@courses/show/%@?key=%@", [MSCobaltKit baseUrl], courseId, [MSCobaltKit apiKey]]];
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:fetchingUrl] options:NSJSONReadingAllowFragments error:error];
     [self setVariablesWithData:data];
 }

@@ -34,8 +34,10 @@ typedef NS_ENUM(NSInteger, MSCCampus){
 
 @interface MSCobaltKit : NSObject
 
-+ (void)setApiKey:(NSString *)apiKey;
++ (void)setBaseUrl:(NSString *)baseUrl;
++ (NSString *)baseUrl;
 
++ (void)setApiKey:(NSString *)apiKey;
 + (NSString *)apiKey;
 
 + (void)performRequestWithUrl:(NSString *)url parameters:(NSMutableDictionary *)param onCompletion:(MSCRequestDoneBlock)handler;

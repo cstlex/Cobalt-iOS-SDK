@@ -54,7 +54,7 @@
         [params setObject:sortKey forKey:@"sort"];
     }
     
-    [super performRequestWithUrl:@"https://cobalt.qas.im/api/1.0/courses/list" parameters:params onCompletion:^(NSArray *response, NSError *error){
+    [super performRequestWithUrl:@"courses/list" parameters:params onCompletion:^(NSArray *response, NSError *error){
         if (error){
             if (errorHandler){
                 errorHandler(error);
@@ -116,7 +116,7 @@
         [params setObject:sortKey forKey:@"sort"];
     }
     
-    [super performRequestWithUrl:@"https://cobalt.qas.im/api/1.0/courses/search" parameters:params onCompletion:^(id response, NSError *error) {
+    [super performRequestWithUrl:@"courses/search" parameters:params onCompletion:^(id response, NSError *error) {
         if (error){
             if (errorHandler){
                 errorHandler(error);
